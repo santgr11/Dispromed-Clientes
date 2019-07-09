@@ -28,7 +28,7 @@
 					class="form-control form-control-lg mb-4 col-8" placeholder="Nuevo Comentario">
 		</textarea>
 		
-			<select class="custom-select" th:field="*{vendedor}">
+			<select class="custom-select ml-2" th:field="*{vendedor}">
 				<option th:each="tempVendedor : ${vendedores}" 
 						th:value="${tempVendedor.id}" 
 						th:text="${tempVendedor.nombre}">vendedor</option>
@@ -39,13 +39,13 @@
 	</form>
 	
 	
-	<table class="table table-bordered table-striped">
+	<table class="table table-bordered table-striped table-hover text-center">
 		<thead class="thead-dark">
 			<tr>
-				<th>Fecha</th>
-				<th>Vendedor</th>
+				<th style="width: 10%">Fecha</th>
+				<th style="width: 10%">Vendedor</th>
 				<th>Comentario</th>
-				<th>Acciones</th>
+				<th style="width: 10%">Acciones</th>
 			</tr>
 		</thead>
 		
@@ -53,7 +53,7 @@
 			<tr th:each="tempComent : ${comentarios}">
 				<td th:text="${tempComent.timestamp}" />
 				<td th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
-				<td th:text="${tempComent.detalle}" />				
+				<td th:text="${tempComent.detalle}" class="text-justify"/>				
 				<td>
 					<!--  Update button/link -->
 					<a th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
