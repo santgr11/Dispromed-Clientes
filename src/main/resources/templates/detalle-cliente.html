@@ -19,6 +19,7 @@
 <div class="container">
 
 	<h3><span th:text="${cliente.nombre}">cliente</span> ( REF: <span th:text="${cliente.referencia}">numero de referencia</span> ) </h3>
+	<a th:href="@{/}">Mostrar lista de clientes</a>
 	
 	<hr>
 
@@ -65,9 +66,6 @@
 		</tbody>		
 	</table>
 
-
-
-<a th:href="@{/}">Mostrar lista de clientes</a>
 </div>
 </body>
 
