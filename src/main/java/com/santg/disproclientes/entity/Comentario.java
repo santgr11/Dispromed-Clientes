@@ -24,7 +24,7 @@ public class Comentario implements Comparable<Comentario>{
 	private int id;
 	
 	@Column(name="detalle")
-	@Size(max = 240)
+	@Size(max = 500)
 	private String detalle;
 	
 	@Temporal(TemporalType.TIMESTAMP)
@@ -41,7 +41,7 @@ public class Comentario implements Comparable<Comentario>{
 	// constructors
 	public Comentario() {}
 
-	public Comentario(@Size(max = 240) String detalle, Date timestamp, Vendedor vendedor) {
+	public Comentario(@Size(max = 500) String detalle, Date timestamp, Vendedor vendedor) {
 		this.detalle = detalle;
 		this.timestamp = timestamp;
 		this.vendedor = vendedor;
