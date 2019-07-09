@@ -1,6 +1,7 @@
 package com.santg.disproclientes.controller;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
@@ -53,6 +54,8 @@ public class GeneralController {
 		
 		// get Comentarios list from that Cliente
 		List<Comentario> comentarios = cliente.getComentarios();
+		
+		Collections.sort(comentarios);
 		
 		// add the list to the model
 		model.addAttribute("comentarios", comentarios);

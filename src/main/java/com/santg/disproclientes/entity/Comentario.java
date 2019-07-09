@@ -17,7 +17,7 @@ import javax.validation.constraints.Size;
 import org.springframework.data.annotation.CreatedDate;
 
 @Entity
-public class Comentario {
+public class Comentario implements Comparable<Comentario>{
 	
 	@Id
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
@@ -45,6 +45,13 @@ public class Comentario {
 		this.detalle = detalle;
 		this.timestamp = timestamp;
 		this.vendedor = vendedor;
+	}
+	
+	// comparable to sort by date descending (newer first)
+	@Override
+	public int compareTo(Comentario o) {
+		
+		return o.getTimestamp().compareTo(this.timestamp);
 	}
 
 	// getters and setters
@@ -87,5 +94,7 @@ public class Comentario {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+
+
 
 }
