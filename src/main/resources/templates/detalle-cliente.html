@@ -43,6 +43,7 @@
 		<thead class="thead-dark">
 			<tr>
 				<th>Fecha</th>
+				<th>Vendedor</th>
 				<th>Comentario</th>
 				<th>Acciones</th>
 			</tr>
@@ -51,6 +52,7 @@
 		<tbody>
 			<tr th:each="tempComent : ${comentarios}">
 				<td th:text="${tempComent.timestamp}" />
+				<td th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
 				<td th:text="${tempComent.detalle}" />				
 				<td>
 					<!--  Update button/link -->
