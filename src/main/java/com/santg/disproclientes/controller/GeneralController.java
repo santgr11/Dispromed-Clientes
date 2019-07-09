@@ -49,8 +49,7 @@ public class GeneralController {
 	public String detallesCliente(@RequestParam("clienteId") int id, Model model) {
 		
 		// get Cliente from repository using id
-		Optional<Cliente> tempCliente = clienteRepository.findById(id);
-		Cliente cliente = tempCliente.get();
+		Cliente cliente = clienteRepository.getOne(id);
 		
 		// get Comentarios list from that Cliente
 		List<Comentario> comentarios = cliente.getComentarios();
