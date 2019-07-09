@@ -58,7 +58,8 @@
 				<td>
 					<!--  Update button/link -->
 					<a th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
-						class="btn btn-danger btn-sm">
+						class="btn btn-danger btn-sm"
+						onClick="if (!(confirm('Esta seguro que desea borrar este comentario?'))) return false">
 						Borrar
 					</a>
 				</td>
