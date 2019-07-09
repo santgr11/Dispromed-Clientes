@@ -1,0 +1,58 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Dispromed Clientes</title>
+</head>
+
+<body>
+
+<div class="container">
+
+	<h3>Clientes</h3>
+	<hr>
+	
+	<!-- Boton para agregar cliente -->
+	<a th:href="@{/agregarCliente}"
+		class="btn btn-primary btn-sm mb-3">
+		Agregar Cliente
+	</a>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Codigo</th>
+				<th>Cliente</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempCliente : ${clientes}">
+			
+				<td th:text="${tempCliente.referencia}" />	
+				<td th:text="${tempCliente.nombre}" />
+				
+				<td>
+					<!--  Update button/link -->
+					<a th:href="@{/detalles(clienteId=${tempCliente.id})}"
+						class="btn btn-info btn-sm">
+						Ver Cliente
+					</a>
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+	
+</div>
+	
+</body>
+</html>

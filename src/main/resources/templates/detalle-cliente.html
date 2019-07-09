@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+	<title>Detalles Cliente</title>
+</head>
+
+<body>
+
+
+
+<div class="container">
+
+	<h3><span th:text="${cliente.nombre}">cliente</span> ( REF: <span th:text="${cliente.referencia}">numero de referencia</span> ) </h3>
+	
+	<hr>
+
+	<form action="#" th:action="@{/guardarComentario(clienteId=${cliente.id})}"
+					 th:object="${comentario}" method="POST" class="form-inline">
+		<textarea type="text" th:field="*{detalle}"
+					class="form-control form-control-lg mb-4 col-8" placeholder="Nuevo Comentario">
+		</textarea>
+		
+		<button type="submit" class="btn btn-success ml-2 col-1">Enviar</button>
+
+	</form>
+	
+	
+	<table class="table table-bordered table-striped">
+		<thead class="thead-dark">
+			<tr>
+				<th>Fecha</th>
+				<th>Comentario</th>
+				<th>Acciones</th>
+			</tr>
+		</thead>
+		
+		<tbody>
+			<tr th:each="tempComent : ${comentarios}">
+				<td th:text="${tempComent.timestamp}" />
+				<td th:text="${tempComent.detalle}" />				
+				<td>
+					<!--  Update button/link -->
+					<a th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
+						class="btn btn-danger btn-sm">
+						Borrar
+					</a>
+				</td>
+			</tr>
+		</tbody>		
+	</table>
+
+
+
+<a th:href="@{/}">Mostrar lista de clientes</a>
+</div>
+</body>
+
+</html>
