@@ -20,7 +20,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		UserBuilder users = User.withDefaultPasswordEncoder();
 		
 		auth.inMemoryAuthentication()
-			.withUser(users.username("dispromed").password("disprotest").roles("JEFE"))
+			.withUser(users.username("dispromed").password("disprotest").roles("JEFE", "VENDEDOR"))
 			.withUser(users.username("vendedor").password("disprotest").roles("VENDEDOR"));
 	}
 
@@ -28,7 +28,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		http.authorizeRequests()
-				.anyRequest().authenticated() // every page need to be logged
+			.antMatchers("/").hasRole("VENDEDOR")
+			.antMatchers("/agregarCliente").hasRole("JEFE") //only JEFES can acces the create cliente page			
 			.and()
 			.formLogin()
 				.loginPage("/login") // where is the login form
