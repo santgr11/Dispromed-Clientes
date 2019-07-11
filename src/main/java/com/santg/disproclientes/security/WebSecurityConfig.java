@@ -37,7 +37,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 				.loginProcessingUrl("/authenticate") // where we send the login data (POST)
 				.permitAll() // everyone can see the login page
 			.and()
-			.logout().permitAll();
+			.logout().permitAll()
+			.and()
+			.exceptionHandling().accessDeniedPage("/accessDenied");
 	}
 	
 	
