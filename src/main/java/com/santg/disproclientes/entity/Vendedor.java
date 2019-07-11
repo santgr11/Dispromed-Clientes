@@ -1,5 +1,6 @@
 package com.santg.disproclientes.entity;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -21,18 +22,29 @@ public class Vendedor {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
-	@Column(name="nombre")
+	@Column(name="nombre", nullable=false)
 	private String nombre;
+	
+	@Column(name="password", nullable=false)
+	private String password;
 	
 	@OneToMany(cascade=CascadeType.ALL)
 	@JoinColumn(name="vendedor_id")
 	private List<Comentario> comentarios;
+	
+	private List<String> roles;
 
 	// constructors
 	public Vendedor() {}
 
 	public Vendedor(String nombre) {
 		this.nombre = nombre;
+	}
+
+	public Vendedor(String nombre, String password, String roles) {
+		this.nombre = nombre;
+		this.password = password;
+		this.roles = new ArrayList<>();
 	}
 
 	// getters and setters
@@ -58,6 +70,22 @@ public class Vendedor {
 
 	public void setComentarios(List<Comentario> comentarios) {
 		this.comentarios = comentarios;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void addRole(String role) {
+		this.roles.add(role);
 	}
 	
 }
