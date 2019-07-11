@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Required meta tags -->
@@ -22,13 +23,13 @@
 	</form>
 	<hr>
 	
-	<!-- Boton para agregar cliente -->
+	<!-- Boton para agregar cliente solo accesible por jefe -->
 	<a th:href="@{/agregarCliente}"
-		class="btn btn-primary btn-sm mb-3">
+		class="btn btn-primary btn-sm mb-3"
+		sec:authorize="hasRole('JEFE')">
 		Agregar Cliente
-	</a>
-	
-	
+	</a>	
+
 	<table class="table table-bordered table-striped table-hover text-center">
 		<thead class="thead-dark">
 			<tr>
