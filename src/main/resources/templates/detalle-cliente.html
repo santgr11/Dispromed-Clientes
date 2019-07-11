@@ -1,5 +1,6 @@
 <!DOCTYPE HTML>
-<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org"
+				xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 
 <head>
     <!-- Required meta tags -->
@@ -46,7 +47,7 @@
 				<th style="width: 10%">Fecha</th>
 				<th style="width: 10%">Vendedor</th>
 				<th>Comentario</th>
-				<th style="width: 10%">Acciones</th>
+				<th style="width: 10%" sec:authorize="hasRole('JEFE')">Acciones</th>
 			</tr>
 		</thead>
 		
@@ -55,7 +56,7 @@
 				<td th:text="${tempComent.timestamp}" />
 				<td th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
 				<td th:text="${tempComent.detalle}" class="text-justify"/>				
-				<td>
+				<td sec:authorize="hasRole('JEFE')">
 					<!--  Update button/link -->
 					<a th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
 						class="btn btn-danger btn-sm"

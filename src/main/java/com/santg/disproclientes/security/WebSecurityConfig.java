@@ -29,7 +29,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		http.authorizeRequests()
 			.antMatchers("/").hasRole("VENDEDOR")
-			.antMatchers("/agregarCliente").hasRole("JEFE") //only JEFES can acces the create cliente page			
+			.antMatchers("/agregarCliente").hasRole("JEFE") //only JEFES can acces the create Cliente page	
+			.antMatchers("/borrarComentario").hasRole("JEFE") // only JEFES can delete a Comentario
 			.and()
 			.formLogin()
 				.loginPage("/login") // where is the login form
