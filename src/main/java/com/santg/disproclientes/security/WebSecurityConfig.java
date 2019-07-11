@@ -33,7 +33,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.formLogin()
 				.loginPage("/login") // where is the login form
 				.loginProcessingUrl("/authenticate") // where we send the login data (POST)
-				.permitAll(); // everyone can see the login page
+				.permitAll() // everyone can see the login page
+			.and()
+			.logout().permitAll();
 	}
 	
 	
