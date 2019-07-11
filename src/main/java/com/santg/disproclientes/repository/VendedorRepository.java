@@ -8,4 +8,5 @@ import com.santg.disproclientes.entity.Vendedor;
 @Repository
 public interface VendedorRepository extends JpaRepository<Vendedor, Integer> {
 
+	Vendedor findByNombre(String nombre);
 }
