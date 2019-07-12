@@ -14,10 +14,10 @@
 	<name>dispromed-clientes</name>
 	<description>Dispromed seguimiento de clientes</description>
 
-	<properties>
-		<jdkVersion>1.8</jdkVersion>
-		<java.version>12</java.version>
-	</properties>
+    <properties>
+        <maven.compiler.target>1.8</maven.compiler.target>
+        <maven.compiler.source>1.8</maven.compiler.source>
+    </properties>
 
 	<dependencies>
 		<dependency>
