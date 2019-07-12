@@ -60,5 +60,8 @@ public class UserDetailsImpl implements UserDetails {
 	public boolean isEnabled() {
 		return true;
 	}
-
+	
+	public Vendedor getVendedor() {
+		return this.vendedor;
+	}
 }

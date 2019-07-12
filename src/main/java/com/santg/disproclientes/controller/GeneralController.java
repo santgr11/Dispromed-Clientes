@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -21,6 +22,7 @@ import com.santg.disproclientes.entity.Vendedor;
 import com.santg.disproclientes.repository.ClienteRepository;
 import com.santg.disproclientes.repository.ComentarioRepository;
 import com.santg.disproclientes.repository.VendedorRepository;
+import com.santg.disproclientes.security.UserDetailsImpl;
 
 @Controller
 @RequestMapping("/")
@@ -50,6 +52,13 @@ public class GeneralController {
 		
 		// get Cliente from repository using id
 		Cliente cliente = clienteRepository.getOne(id);
+		
+		// get the current Vendedor
+		UserDetailsImpl userDetails= (UserDetailsImpl) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+		Vendedor vendedor = userDetails.getVendedor();
+		
+		model.addAttribute("vendedorActual", vendedor);
+		
 		
 		// get Comentarios list from that Cliente
 		List<Comentario> comentarios = cliente.getComentarios();

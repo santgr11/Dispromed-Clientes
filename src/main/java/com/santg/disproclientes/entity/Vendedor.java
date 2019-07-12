@@ -103,4 +103,9 @@ public class Vendedor {
 		return new ArrayList<>();
 	}
 	
+	// toString
+	public String toString() {
+		return this.nombre + ", " + this.id;
+	}
+	
 }
