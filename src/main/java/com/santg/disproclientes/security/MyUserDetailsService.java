@@ -19,6 +19,12 @@ public class MyUserDetailsService implements UserDetailsService {
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		
 		Vendedor vendedor = vendedorRepository.findByNombre(username);
+		
+		// handle the nullPointerException if the username doesnt exist
+		if(vendedor == null) {
+			throw new UsernameNotFoundException("Usuario Incorrecto");
+		}
+		
 		UserDetailsImpl userDetails = new UserDetailsImpl(vendedor);
 		
 		return userDetails;
