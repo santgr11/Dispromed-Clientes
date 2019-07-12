@@ -20,8 +20,19 @@ public class DispromedClientesApplication {
 	ApplicationRunner applicationRunner(VendedorRepository vendedorRepository) {
 		
 		return args -> {
-			vendedorRepository.save(new Vendedor("jefe", "$2a$10$70cGClabHK6odYxKCoM1fe0M9GqLEVVyLUk1NwghUFowdLuOo.Uia", "JEFE,VENDEDOR"));
-			vendedorRepository.save(new Vendedor("vendedor", "$2a$10$70cGClabHK6odYxKCoM1fe0M9GqLEVVyLUk1NwghUFowdLuOo.Uia", "VENDEDOR"));
+			
+			Vendedor cuentaJefe = vendedorRepository.findByNombre("jefe");
+			
+			if (cuentaJefe == null ) {
+				vendedorRepository.save(new Vendedor("jefe", "$2a$10$70cGClabHK6odYxKCoM1fe0M9GqLEVVyLUk1NwghUFowdLuOo.Uia", "JEFE,VENDEDOR"));
+			}
+			
+			Vendedor cuentaVendedor = vendedorRepository.findByNombre("vendedor");
+			
+			if (cuentaVendedor == null ) {
+				vendedorRepository.save(new Vendedor("vendedor", "$2a$10$70cGClabHK6odYxKCoM1fe0M9GqLEVVyLUk1NwghUFowdLuOo.Uia", "VENDEDOR"));
+			}
+			
 
 		};
 	}
