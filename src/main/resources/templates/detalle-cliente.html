@@ -29,14 +29,7 @@
 		<textarea type="text" th:field="*{detalle}"
 					class="form-control form-control-lg mb-4 col-8" placeholder="Nuevo Comentario">
 		</textarea>
-		<p th:text="${vendedorActual}"></p>
 			<input type="hidden" th:value="${vendedorActual.id}" th:attr="name='vendedor'" />
-<!-- 			<select class="custom-select ml-2" th:field="*{vendedor}">
-				<option th:each="tempVendedor : ${vendedores}" 
-						th:value="${tempVendedor.id}" 
-						th:text="${tempVendedor.nombre}">vendedor</option>
-			</select> -->
-
 			<button type="submit" class="btn btn-success ml-2 col-1">Enviar</button>
 
 	</form>
