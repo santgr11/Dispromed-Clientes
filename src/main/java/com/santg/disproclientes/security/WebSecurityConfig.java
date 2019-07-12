@@ -1,27 +1,27 @@
 package com.santg.disproclientes.security;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.core.userdetails.User;
-import org.springframework.security.core.userdetails.User.UserBuilder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
+	@Autowired
+	private MyUserDetailsService userDetailsService;
+	
 	@Override
-	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-
-		// add users
-		UserBuilder users = User.withDefaultPasswordEncoder();
+	protected void configure(AuthenticationManagerBuilder auth) {
+		auth.authenticationProvider(authenticationProvider());
 		
-		auth.inMemoryAuthentication()
-			.withUser(users.username("dispromed").password("disprotest").roles("JEFE", "VENDEDOR"))
-			.withUser(users.username("vendedor").password("disprotest").roles("VENDEDOR"));
 	}
 
 	@Override
@@ -40,6 +40,16 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 			.logout().permitAll()
 			.and()
 			.exceptionHandling().accessDeniedPage("/accessDenied");
+	}	
+	
+	@Bean
+	DaoAuthenticationProvider authenticationProvider() {
+		
+		DaoAuthenticationProvider daoAuthenticationProvider = new DaoAuthenticationProvider();
+		daoAuthenticationProvider.setPasswordEncoder(new BCryptPasswordEncoder());
+		daoAuthenticationProvider.setUserDetailsService(this.userDetailsService);
+		
+		return daoAuthenticationProvider;		
 	}
 	
 	
