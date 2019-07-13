@@ -40,7 +40,7 @@ and the name of the user adding the comment. Only a boss can delete a comment.
 The messages are shown in order, newer on top.
 
 **New client:** this page can only be accessed with a boss account and is used to add a new client to the database, here you
-have to name the client a set a reference number, the idea of this number is to use it to match with the already existing data base
+have to name the client and set a reference number, the idea of this number is to use it to match with the already existing data base
 used in other program for the company.
 
 **Access denied:** this page is shown when someone try to access a page without the role needed (to create a client as a seller for example)
