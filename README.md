@@ -10,8 +10,8 @@ This web app was built using Spring Boot with:
 - Spring Security to build the accounts system
 - Data JPA to access the database
 - Postgres SQL to store the data
-- Thymeleaf to implement functionality in the front ent
-- Bootstrap to aply css to the pages
+- Thymeleaf to implement functionality in the front end
+- Bootstrap to apply css to the pages
 
 ## The problem
 The problem I try to solve with this project is from a company where they have a group of sellers which have different clients
