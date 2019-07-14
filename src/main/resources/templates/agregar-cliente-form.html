@@ -31,9 +31,9 @@
 			<!-- Add hidden form field to handle the update -->
 			<input type="hidden" th:field="*{id}" /> <input type="text"
 				th:field="*{nombre}" class="form-control mb-4 col-4"
-				placeholder="Nombre"> <input type="text"
+				placeholder="Nombre" required="required"> <input type="text"
 				th:field="*{referencia}" class="form-control mb-4 col-4"
-				placeholder="Codigo de referencia">
+				placeholder="Codigo de referencia" required="required">
 
 			<button type="submit" class="btn btn-info col-2">Crear</button>
 		</form>
