@@ -23,13 +23,23 @@
 	</form>
 	<hr>
 	
+	<div class="container mb-3 row">
+	<!-- Barra de busqueda -->
+	<div class="col-lg">
+	<form th:action="@{/buscarCliente}" method="GET">
+		<input type="text" placeholder="Buscar cliente"  class="col-6"/>
+		<input type="submit" value="Buscar" class="btn btn-info ml-2" />
+	</form>
+	</div>
+	
 	<!-- Boton para agregar cliente solo accesible por jefe -->
 	<a th:href="@{/agregarCliente}"
-		class="btn btn-primary btn-sm mb-3"
+		class="btn btn-success btn-sm ml-2 float-right"
 		sec:authorize="hasRole('JEFE')">
 		Agregar Cliente
 	</a>	
-
+	</div>
+	
 	<table class="table table-bordered table-striped table-hover text-center">
 		<thead class="thead-dark">
 			<tr>
