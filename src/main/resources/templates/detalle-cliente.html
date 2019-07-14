@@ -60,7 +60,7 @@
 
 			<tbody>
 				<tr th:each="tempComent : ${comentarios}">
-					<td th:text="${tempComent.timestamp}" />
+					<td th:text="${#dates.format(tempComent.timestamp, 'dd/MM/yyyy HH:mm:ss')}" />
 					<td
 						th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
 					<td th:text="${tempComent.detalle}" class="text-justify" />
