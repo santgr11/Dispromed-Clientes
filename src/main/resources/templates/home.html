@@ -26,8 +26,8 @@
 	<div class="container mb-3 row">
 	<!-- Barra de busqueda -->
 	<div class="col-lg">
-	<form th:action="@{/buscarCliente}" method="GET">
-		<input type="text" placeholder="Buscar cliente"  class="col-6"/>
+	<form th:action="@{/buscarCliente(nombreCliente=)}" method="GET">
+		<input type="text" placeholder="Buscar cliente" name="nombreCliente" class="col-6"/>
 		<input type="submit" value="Buscar" class="btn btn-info ml-2" />
 	</form>
 	</div>

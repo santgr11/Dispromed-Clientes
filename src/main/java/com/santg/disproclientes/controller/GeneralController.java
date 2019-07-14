@@ -133,4 +133,14 @@ public class GeneralController {
 		
 		return "redirect:/detalles?clienteId=" + clienteId;
 	}
+	
+	@GetMapping("/buscarCliente")
+	public String buscarCliente(@RequestParam("nombreCliente") String nombreCliente, Model model) {
+		
+		List<Cliente> clientes = clienteRepository.findByNombreContainingIgnoreCase(nombreCliente);
+		
+		model.addAttribute("clientes", clientes);
+		
+		return "home";
+	}
 }

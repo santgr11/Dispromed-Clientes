@@ -10,6 +10,6 @@ import com.santg.disproclientes.entity.Cliente;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 	
-	List<Cliente> findByNombreContaining(String nombre);
+	List<Cliente> findByNombreContainingIgnoreCase(String nombre);
 
 }
