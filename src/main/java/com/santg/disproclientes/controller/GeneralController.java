@@ -5,6 +5,7 @@ import java.util.Collections;
 import java.util.Date;
 import java.util.List;
 import java.util.Optional;
+import java.util.TimeZone;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -113,6 +114,7 @@ public class GeneralController {
 			comentarios = new ArrayList<>();			
 		}
 		
+		TimeZone.setDefault(TimeZone.getTimeZone("America/Argentina/Buenos_Aires"));
 		comentario.setTimestamp(new Date());
 		
 		comentarios.add(comentario);
