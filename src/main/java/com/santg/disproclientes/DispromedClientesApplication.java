@@ -4,8 +4,6 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.ComponentScan;
-
 import com.santg.disproclientes.entity.Vendedor;
 import com.santg.disproclientes.repository.VendedorRepository;
 
@@ -15,6 +13,7 @@ public class DispromedClientesApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DispromedClientesApplication.class, args);
 	}
+	
 	
 	@Bean
 	ApplicationRunner applicationRunner(VendedorRepository vendedorRepository) {
