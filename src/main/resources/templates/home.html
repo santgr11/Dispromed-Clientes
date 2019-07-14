@@ -14,13 +14,18 @@
 </head>
 
 <body>
-
 <div class="container">
 
+	<!-- Barra de Navegacion -->
+	<nav class="navbar navbar-dark bg-dark mb-2">
+	  <a class="navbar-brand" th:href="@{/}">Ver Lista de Clientes</a>
+	  <form th:action="@{/logout}" method="POST">
+		<input type="submit" value="Salir" class="btn btn-danger float-right" />
+		</form>
+	</nav>
+
 	<h3>Clientes</h3>
-	<form th:action="@{/logout}" method="POST">
-		<input type="submit" value="Salir" class="btn btn-danger" />
-	</form>
+	
 	<hr>
 	
 	<div class="container mb-3 row">

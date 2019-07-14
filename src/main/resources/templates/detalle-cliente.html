@@ -17,52 +17,65 @@
 
 
 
-<div class="container">
+	<div class="container">
+		<!-- Barra de Navegacion -->
+		<nav class="navbar navbar-dark bg-dark mb-2">
+			<a class="navbar-brand" th:href="@{/}">Ver Lista de Clientes</a>
+			<form th:action="@{/logout}" method="POST">
+				<input type="submit" value="Salir"
+					class="btn btn-danger float-right" />
+			</form>
+		</nav>
 
-	<h3><span th:text="${cliente.nombre}">cliente</span> ( REF: <span th:text="${cliente.referencia}">numero de referencia</span> ) </h3>
-	<a th:href="@{/}">Mostrar lista de clientes</a>
-	
-	<hr>
+		<h3>
+			<span th:text="${cliente.nombre}">cliente</span> ( REF: <span
+				th:text="${cliente.referencia}">numero de referencia</span> )
+		</h3>
+		<hr>
 
-	<form action="#" th:action="@{/guardarComentario(clienteId=${cliente.id})}"
-					 th:object="${comentario}" method="POST" class="form-inline">
-		<textarea type="text" th:field="*{detalle}"
-					class="form-control form-control-lg mb-4 col-8" placeholder="Nuevo Comentario">
+		<form action="#"
+			th:action="@{/guardarComentario(clienteId=${cliente.id})}"
+			th:object="${comentario}" method="POST" class="form-inline">
+			<textarea type="text" th:field="*{detalle}"
+				class="form-control form-control-lg mb-4 col-8"
+				placeholder="Nuevo Comentario">
 		</textarea>
-			<input type="hidden" th:value="${vendedorActual.id}" th:attr="name='vendedor'" />
+			<input type="hidden" th:value="${vendedorActual.id}"
+				th:attr="name='vendedor'" />
 			<button type="submit" class="btn btn-success ml-2 col-1">Enviar</button>
 
-	</form>
-	
-	
-	<table class="table table-bordered table-striped table-hover text-center">
-		<thead class="thead-dark">
-			<tr>
-				<th style="width: 10%">Fecha</th>
-				<th style="width: 10%">Vendedor</th>
-				<th>Comentario</th>
-				<th style="width: 10%" sec:authorize="hasRole('JEFE')">Acciones</th>
-			</tr>
-		</thead>
-		
-		<tbody>
-			<tr th:each="tempComent : ${comentarios}">
-				<td th:text="${tempComent.timestamp}" />
-				<td th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
-				<td th:text="${tempComent.detalle}" class="text-justify"/>				
-				<td sec:authorize="hasRole('JEFE')">
-					<!--  Update button/link -->
-					<a th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
+		</form>
+
+
+		<table
+			class="table table-bordered table-striped table-hover text-center">
+			<thead class="thead-dark">
+				<tr>
+					<th style="width: 10%">Fecha</th>
+					<th style="width: 10%">Vendedor</th>
+					<th>Comentario</th>
+					<th style="width: 10%" sec:authorize="hasRole('JEFE')">Acciones</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr th:each="tempComent : ${comentarios}">
+					<td th:text="${tempComent.timestamp}" />
+					<td
+						th:text="${tempComent.vendedor} ? ${tempComent.vendedor.nombre}: '-'" />
+					<td th:text="${tempComent.detalle}" class="text-justify" />
+					<td sec:authorize="hasRole('JEFE')">
+						<!--  Update button/link --> <a
+						th:href="@{/borrarComentario(comentarioId=${tempComent.id})}"
 						class="btn btn-danger btn-sm"
 						onClick="if (!(confirm('Esta seguro que desea borrar este comentario?'))) return false">
-						Borrar
-					</a>
-				</td>
-			</tr>
-		</tbody>		
-	</table>
+							Borrar </a>
+					</td>
+				</tr>
+			</tbody>
+		</table>
 
-</div>
+	</div>
 </body>
 
 </html>

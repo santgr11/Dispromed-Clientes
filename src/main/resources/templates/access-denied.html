@@ -14,12 +14,20 @@
 </head>
 
 <body>
+	<div class="container">
+		<!-- Barra de Navegacion -->
+		<nav class="navbar navbar-dark bg-dark mb-2">
+			<a class="navbar-brand" th:href="@{/}">Ver Lista de Clientes</a>
+			<form th:action="@{/logout}" method="POST">
+				<input type="submit" value="Salir"
+					class="btn btn-danger float-right" />
+			</form>
+		</nav>
 
-    	<div class="alert alert-danger text-center col-xs-offset-1 col-xs-10">
-    		Acceso denegado
-    	</div>
-    	<a th:href="@{/}">Volver a lista de clientes</a>
+		<div class="alert alert-danger text-center col-xs-offset-1 col-xs-10">
+			Acceso denegado</div>
 
+	</div>
 </body>
 
 </html>
